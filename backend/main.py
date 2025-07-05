@@ -21,3 +21,9 @@ def book_event(event: EventData):
         import traceback
         print("🔥 ERROR:", traceback.format_exc())
         return {"status": "error", "message": str(e)}
+import os
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))  # use PORT env var or fallback
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
